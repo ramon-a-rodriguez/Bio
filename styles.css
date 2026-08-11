@@ -267,7 +267,7 @@ a{ color: inherit; }
 }
 
 /* Achievements */
-.cards{ display:grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.cards{ display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
 .card{
   background: var(--surface); border: 1px solid var(--line);
   border-radius: var(--radius); padding: 34px;
@@ -316,6 +316,17 @@ a{ color: inherit; }
 .cred-issuer{ font-size: 0.82rem; color: var(--ink-soft); }
 @media (max-width: 860px){ .cred-grid{ grid-template-columns: 1fr; gap: 40px; } }
 
+.thesis-note{
+  margin-top: 40px; text-align:left;
+  background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--signal);
+  border-radius: var(--radius); padding: 22px 26px;
+}
+.tn-label{
+  font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--signal-dk); margin: 0 0 8px;
+}
+.thesis-note p:last-child{ margin:0; color: var(--ink-soft); font-size: 0.95rem; }
+
 /* Recommendations */
 .quote-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .quote-card{
@@ -331,36 +342,49 @@ a{ color: inherit; }
 .q-role{ font-size: 0.78rem; color: var(--ink-soft); }
 @media (max-width: 900px){ .quote-grid{ grid-template-columns: 1fr; } }
 
-/* Footprint / signature diagram */
+/* Footprint / signature region grid */
 .footprint{ text-align:center; }
 .footprint .eyebrow, .footprint h2, .footprint .section-lede{ text-align:left; }
-.net-diagram{ max-width: 700px; margin: 20px auto 10px; }
-.net-svg{ width:100%; height:auto; }
-.net-link{ stroke: var(--line); stroke-width: 1.5; }
-.net-node{ fill: var(--ink-soft); }
-.net-hub{ fill: var(--signal); }
-.net-hub-pulse{
-  fill:none; stroke: var(--signal); stroke-width:1.5; opacity:0;
-  transform-origin: 400px 210px;
-  animation: radiate 2.6s ease-out infinite;
+
+.region-grid{
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px; margin: 8px 0 36px; text-align:left;
 }
-@keyframes radiate{
-  0%{ r:9; opacity:0.7; }
-  100%{ r:32; opacity:0; }
+.region-card{
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 22px 24px;
 }
-.net-label{
-  font-family: var(--font-mono); font-size: 12px; fill: var(--ink-soft);
-  letter-spacing: 0.04em;
+.region-head{ display:flex; align-items:baseline; gap:10px; margin-bottom:10px; }
+.region-count{
+  font-family: var(--font-mono); font-weight:700; font-size: 1.7rem; color: var(--signal-dk);
 }
-.net-hub-label{ fill: var(--ink); font-weight:600; }
+.region-name{
+  font-family: var(--font-mono); font-size: 0.82rem; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--ink);
+}
+.region-list{ font-size: 0.86rem; color: var(--ink-soft); margin:0; line-height:1.6; }
+
+.footprint-highlight{
+  display:flex; align-items:center; gap: 22px; text-align:left;
+  background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--status);
+  border-radius: var(--radius); padding: 22px 26px; margin-bottom: 40px;
+}
+.fh-stat{
+  font-family: var(--font-mono); font-weight:700; font-size: 2.6rem; color: var(--ink);
+  margin:0; flex-shrink:0;
+}
+.fh-copy{ margin:0; color: var(--ink-soft); font-size: 0.98rem; }
+@media (max-width: 560px){ .footprint-highlight{ flex-direction:column; align-items:flex-start; gap:8px; } }
+
 .footprint-stats{
-  display:flex; justify-content:center; gap: 56px; margin: 46px 0 0; padding-top:28px;
-  border-top: 1px solid var(--line);
+  display:flex; flex-wrap:wrap; justify-content:flex-start; gap: 44px; margin: 0 0 18px; padding-top:28px;
+  border-top: 1px solid var(--line); text-align:left;
 }
 .footprint-stats > div{ max-width: 180px; }
-.footprint-stats dt{ font-family: var(--font-mono); font-weight:600; font-size: 1.6rem; }
+.footprint-stats dt{ font-family: var(--font-mono); font-weight:600; font-size: 1.5rem; }
 .footprint-stats dd{ margin:4px 0 0; font-size: 0.8rem; color: var(--ink-soft); line-height:1.4; }
-@media (max-width: 700px){ .footprint-stats{ flex-wrap:wrap; gap: 28px; justify-content:flex-start; text-align:left; } }
+
+.footprint-note{ font-size: 0.86rem; color: var(--ink-soft); text-align:left; max-width: 620px; margin:0; }
 
 /* Contact */
 .contact-section{ border-bottom:none; }
