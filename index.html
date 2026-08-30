@@ -9,6 +9,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* FIX: Forzar la cuadrícula a 2x2 para que las 4 recomendaciones se vean balanceadas */
+  .quote-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  @media (max-width: 900px) { .quote-grid { grid-template-columns: 1fr !important; } }
+</style>
 </head>
 <body>
 
